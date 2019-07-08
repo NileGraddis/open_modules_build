@@ -101,6 +101,13 @@ run cd open_modules_build &&\
     cd aibs_motion_ipc &&\
     conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9 -o aibsio_branch=om_master_http
 
+run apt-get install gdb -y
+
+cmd gdb --args \
+    /root/.conan/data/aibs.motion.ipc/master/aibs/stable/build/07ba242612b95b7711d9b7f4eb2754b4bfdd7bda/build/bin/aibs.motion.ipc \
+    --offset_stddev 5.0 \
+    --json=/allen/scratch/aibstemp/nileg/motion_bugs/OPEN_MESOSCOPE_MOTION_CORRECTION_QUEUE_875810189_input.json
+
 # run cd open_modules_build &&\
 #     git pull &&\
 #     cd aibs_motion_ipc &&\
