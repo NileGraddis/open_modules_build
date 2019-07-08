@@ -8,7 +8,7 @@ class AIBSMotionIPCConan(ConanFile):
     license = 'Allen Institute Software License'
     url = 'http://johng@stash.corp.alleninstitute.org/scm/om/aibs.motion.ipc.git'
     settings = 'os', 'compiler', 'build_type', 'arch'
-    generators = 'cmake'
+    generators = ['cmake', "virtualenv"]
     build_requires = [
         "CMake/3.12.1@aibs/stable", 
         "Ninja/1.7.2@aibs/stable", 
