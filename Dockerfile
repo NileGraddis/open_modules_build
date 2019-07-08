@@ -1,8 +1,8 @@
 from ubuntu:18.04
 
-run apt update
+run apt-get update
 
-run apt install wget -y
+run apt-get install wget -y
 
 run wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 run bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
@@ -11,8 +11,8 @@ run conda create --name conan python=3.7 -y
 run /bin/bash -c "source activate conan"
 run pip install conan
 
-run apt install git -y
-run apt install build-essential -y
+run apt-get install git -y
+run apt-get install build-essential -y
 
 run git clone http://nileg@stash.corp.alleninstitute.org/scm/om/conan.aiconfig.git -b settingsless &&\
     conan config install conan.aiconfig &&\
@@ -39,7 +39,7 @@ run git clone https://github.com/NileGraddis/open_modules_build
 run cd open_modules_build/mettle &&\
     conan create . mettle/git@aibs/stable --profile gcc9
 
-run apt install zlib1g-dev  -y
+run apt-get install zlib1g-dev  -y
 
 run cd open_modules_build &&\
     git pull &&\
@@ -56,7 +56,6 @@ run cd open_modules_build &&\
     cd openblas &&\
     conan create . OpenBLAS/0.3.5@aibs/stable -b missing --profile gcc9
 
-
 run conan install histogram/3.2@aibs/stable -b missing --profile gcc9
 run conan install libcurl/7.61.0@aibs/stable -b missing --profile gcc9
 run conan install libpng/1.6.34@aibs/stable -b missing --profile gcc9
@@ -66,16 +65,27 @@ run cd open_modules_build &&\
     cd libtiff &&\
     conan create . libtiff/4.0.8@aibs/stable -b missing --profile gcc9
 
-    # FFmpeg/3.4.2@aibs/stable:9d7efe5aa51c8e14ef1d260ee2b8e03c8490c568 - Build
+run conan install libunwind/1.2.1@aibs/stable -b missing --profile gcc9
+run conan install blaze/3.5@aibs/stable -b missing --profile gcc9
+run conan install openh264/1.7.0@aibs/stable -b missing --profile gcc9
+
+run apt-get install pkg-config -y
+run conan install FFmpeg/3.4.2@aibs/stable -b missing --profile gcc9
+
+run cd open_modules_build &&\
+    git pull &&\
+    cd fftw &&\
+    conan create . fftw/3.3.8@aibs/stable -b missing --profile gcc9
+
+run cd open_modules_build &&\
+    git pull &&\
+    cd fmt &&\
+    conan create . fmt/4.0.0@aibs/stable -b missing --profile gcc9
+
     # aibsio/master@aibs/stable:bb719cb5adce1b32a57f4a92b199de5c9540ef90 - Build
-    # blaze/3.5@aibs/stable:40f87659cfa99d67368d2224bb20e8707047227c - Build
-    # fftw/3.3.8@aibs/stable:ce1e3c2dad4c30d9c16b12dac841836a3f7d8b4a - Build
-    # fmt/4.0.0@aibs/stable:27cb7fbffba1a5268eda91c4da54b0254d48c3b1 - Build
-    # libunwind/1.2.1@aibs/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9 - Build
-    # openh264/1.7.0@aibs/stable:27cb7fbffba1a5268eda91c4da54b0254d48c3b1 - Build
 
 
-# run cd open_modules_build &&\
-#     git pull &&\
-#     cd aibs_motion_ipc &&\
-#     conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9
+run cd open_modules_build &&\
+    git pull &&\
+    cd aibs_motion_ipc &&\
+    conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9
