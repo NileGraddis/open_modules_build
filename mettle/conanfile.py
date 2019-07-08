@@ -11,7 +11,7 @@ class MettleConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=True"
     requires = 'Boost/1.67.0@aibs/stable'
-    build_requires = ["CMake/3.12.1@aibs/stable", "Ninja/1.7.2@aibs/stable"]
+    build_requires = ["CMake/3.12.1@aibs/stable", "Ninja/1.7.2@aibs/stable", "GCC/7.2.0@aibs/stable"]
     generators = 'cmake'
     source_dir = 'mettle'
 
