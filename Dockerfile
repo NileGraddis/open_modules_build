@@ -60,8 +60,14 @@ run git clone https://github.com/NileGraddis/open_modules_build
 run cd open_modules_build/mettle &&\
     conan create . mettle/git@aibs/stable --profile gcc9
 
-# run git clone http://nileg@stash.corp.alleninstitute.org/scm/om/aibs.motion.ipc.git -b master &&\
-#     cd aibs.motion.ipc &&\
-#     mkdir build &&\
-#     cd build &&\
-#     conan install .. --profile gcc9 -b missing
+run apt install zlib1g-dev  -y
+
+run cd open_modules_build &&\
+    git pull &&\
+    cd blackhole &&\
+    conan create . Blackhole/1.9.0@aibs/stable -b missing --profile gcc9
+
+run cd open_modules_build &&\
+    git pull &&\
+    cd aibs_motion_ipc &&\
+    conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9
