@@ -10,7 +10,7 @@ class MettleConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=True"
-    requires = 'Boost/1.67@aibs/stable'
+    requires = 'Boost/1.67.0@aibs/stable'
     build_requires = "CMake/3.12.1@aibs/stable"
     generators = 'cmake'
     source_dir = 'mettle'
