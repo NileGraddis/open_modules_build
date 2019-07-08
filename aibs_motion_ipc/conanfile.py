@@ -35,7 +35,7 @@ class AIBSMotionIPCConan(ConanFile):
 
     def build(self):
         cmake = CMake(self, generator="Ninja")
-        cmake.configure(build_dir='build', source_dir='../aibs.motion.ipc')
+        cmake.configure(build_dir='build', source_dir='../aibs.motion.ipc', build_type="Debug")
         cmake.build()
 
     def package(self):

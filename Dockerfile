@@ -94,12 +94,25 @@ run cd open_modules_build &&\
 
 run git clone http://nileg@stash.corp.alleninstitute.org/scm/om/aibsio.git -b om_master_http &&\
     cd aibsio &&\
-    conan create . aibsio/master@aibs/stable -b missing --profile gcc9
+    conan create . aibsio/om_master_http@aibs/stable -b missing --profile gcc9
 
 run cd open_modules_build &&\
     git pull &&\
     cd aibs_motion_ipc &&\
-    mkdir build &&\
-    cd build &&\
-    conan install .. -b missing --profile gcc9 -o aibsio_branch=master
+    conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9 -o aibsio_branch=om_master_http
+
+# run cd open_modules_build &&\
+#     git pull &&\
+#     cd aibs_motion_ipc &&\
+#     mkdir build &&\
+#     cd build &&\
+#     conan install .. -b missing --profile gcc9 -o aibsio_branch=master &&\
+#     cd .. &&\
+#     git clone http://nileg@stash.corp.alleninstitute.org/scm/om/aibs.motion.ipc.git -b master &&\
+#     cd aibs.motion.ipc &&\
+#     git submodule init &&\
+#     git submodule update &&\
+#     cd ../build &&\
+#     /bin/bash -c "source activate.sh && cmake ../aibs.motion.ipc -G Ninja && ninja"
+    
     # conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9
