@@ -55,12 +55,13 @@ run git clone http://nileg@stash.corp.alleninstitute.org/scm/om/conan.boost.git 
     cd conan.boost &&\
     conan create . Boost/1.67.0@aibs/stable --profile gcc9
 
-run git clone http://nileg@stash.corp.alleninstitute.org/scm/om/conan.mettle.git &&\
-    cd conan.mettle &&\
+run git clone https://github.com/NileGraddis/open_modules_build
+
+run cd open_modules_build/mettle &&\
     conan create . mettle/git@aibs/stable --profile gcc9
 
-run git clone http://nileg@stash.corp.alleninstitute.org/scm/om/aibs.motion.ipc.git -b master &&\
-    cd aibs.motion.ipc &&\
-    mkdir build &&\
-    cd build &&\
-    conan install .. --profile gcc9 -b missing
+# run git clone http://nileg@stash.corp.alleninstitute.org/scm/om/aibs.motion.ipc.git -b master &&\
+#     cd aibs.motion.ipc &&\
+#     mkdir build &&\
+#     cd build &&\
+#     conan install .. --profile gcc9 -b missing
