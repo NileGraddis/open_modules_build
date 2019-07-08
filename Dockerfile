@@ -72,5 +72,10 @@ run cd open_modules_build &&\
 
 run cd open_modules_build &&\
     git pull &&\
+    cd openblas &&\
+    conan create . OpenBLAS/0.3.5@aibs/stable -b missing --profile gcc9
+
+run cd open_modules_build &&\
+    git pull &&\
     cd aibs_motion_ipc &&\
     conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9
