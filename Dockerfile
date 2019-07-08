@@ -33,8 +33,6 @@ run pip install conan
 run apt install git -y
 run apt install build-essential -y
 
-
-
 run git clone http://nileg@stash.corp.alleninstitute.org/scm/om/conan.aiconfig.git -b settingsless &&\
     conan config install conan.aiconfig &&\
     conan profile new gcc9 --detect
@@ -66,6 +64,11 @@ run cd open_modules_build &&\
     git pull &&\
     cd blackhole &&\
     conan create . Blackhole/1.9.0@aibs/stable -b missing --profile gcc9
+
+run cd open_modules_build &&\
+    git pull &&\
+    cd hdf5 &&\
+    conan create . HDF5/1.10.3@aibs/stable -b missing --profile gcc9
 
 run cd open_modules_build &&\
     git pull &&\
