@@ -1,24 +1,5 @@
 from ubuntu:18.04
 
-# Blackhole/1.9.0@aibs/stable:9d2b5ee3d2fe0f27bad1042d6b44bc44b7af3cf1 - Missing
-# Boost/1.70.0@aibs/stable:24d50bc0f0027f4fee6bfedcf473c52716255602 - Missing
-# FFmpeg/3.4.2@aibs/stable:d6d75afde7c4b8bad5669666176d3f76f70e2a76 - Missing
-# HDF5/1.10.4@aibs/stable:c315fa4cdecf2499320fcabbd4fdfda4282d90d9 - Missing
-# OpenBLAS/0.3.6@aibs/stable:c315fa4cdecf2499320fcabbd4fdfda4282d90d9 - Missing
-# aibsio/dev@aibs/stable:5e84c4c3e86bd047aef53eda5ba9b5c50187a1c1 - Missing
-# blaze/3.5@aibs/stable:5aac8d601cde31c07ca94f6c371a85441885bf56 - Missing
-# fftw/3.3.8@aibs/stable:4969c884ba8ecb7270fe8cfc01994e54d8fc10e9 - Missing
-# fmt/4.0.0@aibs/stable:c315fa4cdecf2499320fcabbd4fdfda4282d90d9 - Missing
-# histogram/3.2@aibs/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9 - Missing
-# jsonformoderncpp/3.4.0@vthiery/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9 - Download
-# libcurl/7.61.0@aibs/stable:e801f43e27415e3a4e75088b12fb8f03fe1e7fdf - Missing
-# libpng/1.6.34@aibs/stable:4db1be536558d833e52e862fd84d64d75c2b3656 - Missing
-# libtiff/4.0.8@aibs/stable:97172bab7554b947975f35cab343b2a755de9955 - Missing
-# libunwind/1.2.1@aibs/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9 - Missing
-# openh264/1.7.0@aibs/stable:c315fa4cdecf2499320fcabbd4fdfda4282d90d9 - Missing
-# pybind11/2.2.2@conan/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9 - Download
-
-
 run apt update
 
 run apt install wget -y
@@ -75,7 +56,24 @@ run cd open_modules_build &&\
     cd openblas &&\
     conan create . OpenBLAS/0.3.5@aibs/stable -b missing --profile gcc9
 
-run cd open_modules_build &&\
-    git pull &&\
-    cd aibs_motion_ipc &&\
-    conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9
+
+run conan install histogram/3.2@aibs/stable -b missing --profile gcc9
+run conan install libcurl/7.61.0@aibs/stable -b missing --profile gcc9
+run conan install libpng/1.6.34@aibs/stable -b missing --profile gcc9
+
+
+run conan install libtiff/4.0.8@aibs/stable -b missing --profile gcc9
+
+    # FFmpeg/3.4.2@aibs/stable:9d7efe5aa51c8e14ef1d260ee2b8e03c8490c568 - Build
+    # aibsio/master@aibs/stable:bb719cb5adce1b32a57f4a92b199de5c9540ef90 - Build
+    # blaze/3.5@aibs/stable:40f87659cfa99d67368d2224bb20e8707047227c - Build
+    # fftw/3.3.8@aibs/stable:ce1e3c2dad4c30d9c16b12dac841836a3f7d8b4a - Build
+    # fmt/4.0.0@aibs/stable:27cb7fbffba1a5268eda91c4da54b0254d48c3b1 - Build
+    # libunwind/1.2.1@aibs/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9 - Build
+    # openh264/1.7.0@aibs/stable:27cb7fbffba1a5268eda91c4da54b0254d48c3b1 - Build
+
+
+# run cd open_modules_build &&\
+#     git pull &&\
+#     cd aibs_motion_ipc &&\
+#     conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9
