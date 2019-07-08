@@ -79,7 +79,7 @@ run cd open_modules_build &&\
 
 run cd open_modules_build &&\
     git pull &&\
-    cd fmt &&\
+    cd fmtlib &&\
     conan create . fmt/4.0.0@aibs/stable -b missing --profile gcc9
 
     # aibsio/master@aibs/stable:bb719cb5adce1b32a57f4a92b199de5c9540ef90 - Build

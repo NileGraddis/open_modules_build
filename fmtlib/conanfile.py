@@ -13,7 +13,7 @@ class FmtConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "header_only": [True, False]}
     default_options = "shared=True", "header_only=False"
-    exports_sources = 'CMakeLists.txt'
+    exports_sources = ["CMake/3.12.1@aibs/stable", "Ninja/1.7.2@aibs/stable", "GCC/7.2.0@aibs/stable"]
     generators = 'cmake'
 
     build_requires = 'Ninja/[>=1.7]@aibs/stable'
