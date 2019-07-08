@@ -12,7 +12,7 @@ class AIBSMotionIPCConan(ConanFile):
     build_requires = [
         "CMake/3.12.1@aibs/stable", 
         "Ninja/1.7.2@aibs/stable", 
-        "GCC/7.2.0@aibs/stable"
+        "GCC/7.2.0@aibs/stable",
         'mettle/git@aibs/stable',
     ]
     requires = 'blaze/3.5@aibs/stable', 'histogram/3.2@aibs/stable', 'fftw/3.3.8@aibs/stable'
