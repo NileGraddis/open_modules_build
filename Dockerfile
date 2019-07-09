@@ -103,23 +103,12 @@ run cd open_modules_build &&\
 
 run apt-get install gdb -y
 
-cmd gdb --args \
-    /root/.conan/data/aibs.motion.ipc/master/aibs/stable/build/07ba242612b95b7711d9b7f4eb2754b4bfdd7bda/build/bin/aibs.motion.ipc \
-    --offset_stddev 5.0 \
-    --json=/allen/scratch/aibstemp/nileg/motion_bugs/OPEN_MESOSCOPE_MOTION_CORRECTION_QUEUE_875810189_input.json
+arg INPUT_JSON
+arg OFFSET_STDDEV=5.0
 
-# run cd open_modules_build &&\
-#     git pull &&\
-#     cd aibs_motion_ipc &&\
-#     mkdir build &&\
-#     cd build &&\
-#     conan install .. -b missing --profile gcc9 -o aibsio_branch=master &&\
-#     cd .. &&\
-#     git clone http://nileg@stash.corp.alleninstitute.org/scm/om/aibs.motion.ipc.git -b master &&\
-#     cd aibs.motion.ipc &&\
-#     git submodule init &&\
-#     git submodule update &&\
-#     cd ../build &&\
-#     /bin/bash -c "source activate.sh && cmake ../aibs.motion.ipc -G Ninja && ninja"
-    
-    # conan create . aibs.motion.ipc/master@aibs/stable -b missing --profile gcc9
+entrypoint gdb --args \
+    /root/.conan/data/aibs.motion.ipc/master/aibs/stable/build/07ba242612b95b7711d9b7f4eb2754b4bfdd7bda/build/bin/aibs.motion.ipc \
+    --offset_stddev $OFFSET_STDDEV \
+    --json=$INPUT_JSON \
+
+
