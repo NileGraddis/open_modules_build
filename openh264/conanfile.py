@@ -32,7 +32,7 @@ class OpenH264Conan(ConanFile):
             prefix = os.path.abspath(self.package_folder)
             tools.replace_in_file('Makefile', 'PREFIX=/usr/local', 'PREFIX=%s' % prefix)
             tools.replace_in_file('build/x86-common.mk', 'ASM = nasm', 'ASM = yasm')
-            tools.replace_in_file("BUILDTYPE=Release", "BUILDTYPE=Debug")
+            tools.replace_in_file("Makefile", "BUILDTYPE=Release", "BUILDTYPE=Debug")
             if self.settings.arch == 'x86':
                 arch = 'i386'
             elif self.settings.arch == 'x86_64':
