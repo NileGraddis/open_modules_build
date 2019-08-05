@@ -11,7 +11,7 @@ class FFMpegConan(ConanFile):
 
     generators = 'pkg_config', 'virtualenv'
     build_requires = 'yasm_installer/1.3.0@aibs/stable'
-    requires = 'openh264/1.7.0@aibs/stable'
+    requires = 'openh264/1.8.0@aibs/stable'
 
     def source(self):
         self.run('git clone https://github.com/FFmpeg/FFmpeg.git')

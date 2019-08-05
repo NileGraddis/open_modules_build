@@ -92,7 +92,7 @@ run cd open_modules_build &&\
 run cd open_modules_build &&\
     git pull &&\
     cd openh264 &&\
-    conan create . openh264/1.7.0@aibs/stable -b missing --profile gcc9
+    conan create . openh264/1.8.0@aibs/stable -b missing --profile gcc9
 
 run conan install FFmpeg/3.4.2@aibs/stable -b missing --profile gcc9
 

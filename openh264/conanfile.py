@@ -7,7 +7,7 @@ import os
 
 class OpenH264Conan(ConanFile):
     name = "openh264"
-    version = "1.7.0"
+    version = "1.8.0"
     url = "https://github.com/bincrafters/conan-openh264"
     description = "Open Source H.264 Codec"
     license = "BSD 2-Clause"
