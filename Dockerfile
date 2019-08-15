@@ -89,12 +89,17 @@ run cd open_modules_build &&\
     cd opencv &&\
     conan create . OpenCV/4.0.0@aibs/stable -b missing --profile gcc9
 
+run conan install yasm_installer/1.3.0@aibs/stable -b missing --profile gcc9
+
 run cd open_modules_build &&\
     git pull &&\
     cd openh264 &&\
     conan create . openh264/1.7.0@aibs/stable -b missing --profile gcc9
 
-run conan install FFmpeg/3.4.2@aibs/stable -b missing --profile gcc9
+run cd open_modules_build &&\
+    git pull &&\
+    cd ffmpeg &&\
+    conan create . FFmpeg/3.4.2@aibs/stable -b missing --profile gcc9
 
 run git clone http://nileg@stash.corp.alleninstitute.org/scm/om/aibsio.git -b om_master_http &&\
     cd aibsio &&\
@@ -107,10 +112,10 @@ run cd open_modules_build &&\
 
 run apt-get install gdb -y
 
-arg INPUT_JSON
-arg OFFSET_STDDEV=5.0
+env INPUT_JSON=input.json
+env OFFSET_STDDEV=5.0
 
 entrypoint gdb --args \
-    /root/.conan/data/aibs.motion.ipc/master/aibs/stable/build/07ba242612b95b7711d9b7f4eb2754b4bfdd7bda/build/bin/aibs.motion.ipc \
+    /root/.conan/data/aibs.motion.ipc/master/aibs/stable/build/*/build/bin/aibs.motion.ipc \
     --offset_stddev $OFFSET_STDDEV \
     --json=$INPUT_JSON \
