@@ -94,7 +94,7 @@ run conan install yasm_installer/1.3.0@aibs/stable -b missing --profile gcc9
 run cd open_modules_build &&\
     git pull &&\
     cd openh264 &&\
-    conan create . openh264/1.7.0@aibs/stable -b missing --profile gcc9
+    conan create . openh264/1.8.0@aibs/stable -b missing --profile gcc9
 
 run cd open_modules_build &&\
     git pull &&\
